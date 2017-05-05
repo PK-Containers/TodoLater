@@ -1,0 +1,15 @@
+FROM python:2.7.13
+
+EXPOSE 5003
+
+RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/database
+WORKDIR /usr/src/app
+
+COPY requirements.txt /usr/src/app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY showtimes.py /usr/src/app/showtimes.py
+COPY database/showtimes.json /usr/src/app/database
+
+CMD [ "python", "showtimes.py" ]
