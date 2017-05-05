@@ -52,7 +52,7 @@ def user_bookings(username):
     try:
         users_bookings = requests.get("http://127.0.0.1:5003/bookings/{}".format(username))
     except requests.exceptions.ConnectionError:
-        return ServiceUnavailable("The Bookings service is unavailable.")
+        return "The Bookings service is unavailable."
 
     if users_bookings.status_code == 404:
         return "No bookings were found for {}".format(username)
