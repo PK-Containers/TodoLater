@@ -32,7 +32,7 @@ def showtimes_list():
 @app.route("/showtimes/<date>", methods=['GET'])
 def showtimes_record(date):
     if date not in showtimes:
-        raise NotFound
+        return "Not found"
     print showtimes[date]
     return jsonify(showtimes[date])
 
